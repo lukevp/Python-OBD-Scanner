@@ -1,0 +1,19 @@
+RELEASE HISTORY
+---------------
+
+v0.4 -- October 29, 2009
+  - added support for many Service $01 responses
+  - added initial support for Service $03 DTCs
+  - added obd.interface.create(), which is particularly
+      useful on platforms where enumeration isn't yet
+      supported
+  - added regression tests
+  - added record-all.py to collect debugging and testing
+      data
+
+v0.3.1 -- September 12, 2009
+  quick bugfix
+
+v0.3 -- September 7, 2009
+  initial public release
+

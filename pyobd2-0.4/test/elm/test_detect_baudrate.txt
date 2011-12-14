@@ -1,0 +1,37 @@
+/dev/cu.usbserial-STS2S196
+0.0007 set-baud 38400
+0.0008 clear rx
+0.0017 clear tx
+0.0017 write '\x7f\x7f\r'
+0.0020 set-timeout 0.030000 0.030000
+0.0372 read-until '>' = '\xff\xff' [timeout-expired]
+0.0378 set-baud 9600
+0.0379 clear rx
+0.0384 clear tx
+0.0384 write '\x7f\x7f\r'
+0.0386 set-timeout 0.030000 0.030000
+0.0748 read-until '>' = '\xe0\xe0' [timeout-expired]
+0.0757 set-baud 230400
+0.0758 clear rx
+0.0763 clear tx
+0.0764 write '\x7f\x7f\r'
+0.0765 set-timeout 0.030000 0.030000
+0.1134 read-until '>' = '' [timeout-expired]
+0.1147 set-baud 115200
+0.1149 clear rx
+0.1152 clear tx
+0.1153 write '\x7f\x7f\r'
+0.1155 set-timeout 0.030000 0.030000
+0.1494 read-until '>' = '\xfe~\x82' [timeout-expired]
+0.1508 set-baud 57600
+0.1509 clear rx
+0.1513 clear tx
+0.1513 write '\x7f\x7f\r'
+0.1517 set-timeout 0.030000 0.030000
+0.1896 read-until '>' = '\xff\xff\xf8' [timeout-expired]
+0.1908 set-baud 19200
+0.1909 clear rx
+0.1913 clear tx
+0.1913 write '\x7f\x7f\r'
+0.1915 set-timeout 0.030000 0.030000
+0.2011 read-until '>' = '\x7f\x7f\r?\r\r>'

@@ -1,0 +1,96 @@
+TO DO (in no particular order)
+-----
+
+* Serial port enumeration on other platforms
+
+* Implement descriptions for Service $03 responses (extracting DTCs)
+
+* Make null-removal ELM327-specific, since other ELM interfaces can
+  transmit binary data.  (See FIXME in serialport.py)
+
+* Support for multiple PIDs per SID request (group requests)
+  - On the request side, issue multiple requests for non-CAN protocols.
+  - On the response side, create the multiple responses from the single
+    returned BusMessage by calling obd.message.create() with increasing
+    offsets until all the data in the BusMessage is exhausted.
+
+* Support for passive monitoring
+  - Start/stop functions, raising exceptions if the client tries to
+    issue a command while monitoring
+  - Frame reassembly is already thread-safe, posting complete messages to
+    a synchronized queue.  This allows I/O to be delegated to a secondary
+    thread.  The main thread can simply pull messages from the queue and
+    handle them as it chooses, complaining about, silently dropping, or
+    visually flagging any incomplete messages.
+  - Possibly contain frames_received state in something besides Interface,
+    if that turns out to cause issues with threading.
+  - Basic monitoring process:
+    1) call received_frame for every frame that comes in
+    2) if timeout (protocol-specific?) call flush_frames()
+    3) if SID/PID prefix differs from previous frame (either due to a new
+       request from a scan tool -- SID w/o response bit set -- or due
+       to another response), call flush_frames()
+  - NOTE: we can't just use sequence_key to detect a new request, since
+    that wouldn't account for multiple ECUs responding (which have different
+    header bytes, hence different sequence_keys); this will require some
+    minor retooling
+
+* USB enumeration
+
+* Add support for the upcoming pyserial 2.5 fix to allow high-speed baud
+  rates on Darwin and other POSIX platforms.  (Waiting until pyserial 2.5
+  is stable enough to support.)
+
+* Fill out the protocol-specific Header subclasses to map common symbolic
+  names (e.g., "ECU1", "TESTER_ID") to protocol-specific values.  Also
+  add a "reply()" method, which returns a header with (essentially) the
+  sender/receiver addresses swapped.
+
+* Support for explicit headers for addressing requests.
+
+* A more structured notion of OBD commands/requests to allow issuing
+  specific requests without having to know how they're encoded (which
+  can vary by protocol).  This will require distinguishing between
+  "requests" that are observed passively (and extracted from OBD data)
+  and those that are created locally and then serialized for tramission
+  on the OBD bus.  But, of course, much of the logic should be shared
+  between both.  Currently the Request class represents a locally created
+  request.
+  - $01 = SID+PID (6 PID allowed in CAN)
+  - $02 = SID+PID+frame# (3 PID+frame# allowed in CAN)
+  - $03 = SID
+  - $04 = SID
+  - $05 = SID+TID+sensor# (not supported in CAN; $06 instead)
+  - $06 = SID+TID (6 supported-OBDMIDs, or 1 OBDMID request allowed in CAN)
+  - $07 = SID
+  - $08 = SID+TID+5-bytes-data (6 supported-TIDs, or 1 TID+5-bytes-data in CAN)
+  - $09 = SID+INFTYP (6 supported-INFTYPs, or 1 INFTYP request in CAN)
+  - $0A = SID (CAN only)
+
+* Provide more qualitative information about discovered interfaces,
+  to allow clients to present the user with a more detailed description.
+  E.g., chip identifier, port, name (e.g., ElmScan5 USB), etc.
+
+* (Eventually) Add support for user-defined protocols, such as
+  USER1/USER2 protocols on ELM327.
+
+* (Eventually) Add support for ELM320, 322, 323.
+
+* Clean up ELM32x / OBDLink detection so that it's easier to extend
+  in the future.  (E.g., have a table of commands and expected responses)
+
+* Investigate adding logic to require or silently fulfill various
+  specification-required prerequisites to certain requests.  For example,
+  SID $01 PIDs $01-$20 have 0100 has a prerequisite; SID $09 INFTYP $02 has
+  0901 has a prerequisite in legacy protocols; SID $03 has 0101 as a
+  prerequisite, etc.
+
+* Investigate whether the current handling of incomplete CAN messages
+  is appropriate.  (We treat them just like other incomplete messages;
+  but interfaces that reassemble CAN messages internally may drop them
+  completely.)
+
+* Implement the remaining standard OBD responses.
+
+* Implement a sample GUI-based application.
+

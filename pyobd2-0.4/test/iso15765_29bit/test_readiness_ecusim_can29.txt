@@ -1,0 +1,95 @@
+/dev/cu.usbserial-STS2S196
+0.0002 set-baud 38400
+0.0002 clear rx
+0.0002 clear tx
+0.0003 write '\x7f\x7f\r'
+0.0004 set-timeout 0.030000 0.030000
+0.0171 read-until '>' = '?\r\r>'
+0.0172 write 'ATI\r'
+0.0173 set-timeout 0.130000 0.130000
+0.0337 read-until '>' = 'ELM327 v1.3a\r\r>'
+0.0338 write 'STI\r'
+0.0341 set-timeout 0.130000 0.130000
+0.0494 read-until '>' = '?\r\r>'
+0.0550 write 'ATWS\r'
+0.0551 set-timeout 0.130000 0.130000
+0.0664 read-until '>' = '\r\rELM327 v1.3a\r\r>'
+0.0665 write 'ATE0\r'
+0.0667 set-timeout 0.130000 0.130000
+0.0822 read-until '>' = 'ATE0\rOK\r\r>'
+0.0823 write 'ATL0\r'
+0.0826 set-timeout 0.130000 0.130000
+0.0976 read-until '>' = 'OK\r\r>'
+0.0977 write 'ATH1\r'
+0.0979 set-timeout 0.130000 0.130000
+0.1137 read-until '>' = 'OK\r\r>'
+0.1138 write 'ATTP 0\r'
+0.1140 set-timeout 0.130000 0.130000
+0.1295 read-until '>' = 'OK\r\r>'
+0.1296 write '0100\r'
+0.1300 set-timeout 9.900000 9.900000
+0.1454 read-until '' = 'S'
+0.1458 read-until '' = 'E'
+0.1461 read-until '' = 'A'
+0.1464 read-until '' = 'R'
+0.1469 read-until '' = 'C'
+0.1472 read-until '' = 'H'
+0.1476 read-until '' = 'I'
+0.1479 read-until '' = 'N'
+0.1482 read-until '' = 'G'
+0.1613 read-until '' = '.'
+0.1617 read-until '' = '.'
+0.1620 read-until '' = '.'
+0.1624 read-until '' = '\r'
+1.3775 read-until '' = '1'
+1.3779 read-until '' = '8'
+1.3782 read-until '' = ' '
+1.3785 read-until '' = 'D'
+1.3789 read-until '' = 'A'
+1.3793 read-until '' = ' '
+1.3797 read-until '' = 'F'
+1.3800 read-until '' = '1'
+1.3803 read-until '' = ' '
+1.3807 read-until '' = '1'
+1.3810 read-until '' = '0'
+1.3815 read-until '' = ' '
+1.3818 read-until '' = '0'
+1.3821 read-until '' = '6'
+1.3825 read-until '' = ' '
+1.3828 read-until '' = '4'
+1.3832 read-until '' = '1'
+1.3835 read-until '' = ' '
+1.3838 read-until '' = '0'
+1.3842 read-until '' = '0'
+1.3845 read-until '' = ' '
+1.3849 read-until '' = 'B'
+1.3852 read-until '' = 'E'
+1.3855 read-until '' = ' '
+1.3858 read-until '' = '1'
+1.3862 read-until '' = 'B'
+1.3865 read-until '' = ' '
+1.3869 read-until '' = '3'
+1.3872 read-until '' = '0'
+1.3875 read-until '' = ' '
+1.3880 read-until '' = '1'
+1.3883 read-until '' = '3'
+1.3887 read-until '' = ' '
+1.3891 read-until '' = '\r'
+1.5845 read-until '>' = '18 DA F1 18 06 41 00 88 18 00 10 \r18 DA F1 28 06 41 00 00 08 00 10 \r\r>'
+1.5851 write 'ATDPN\r'
+1.5855 set-timeout 0.130000 0.130000
+1.6007 read-until '>' = 'A7\r\r>'
+1.6020 write '01 01\r'
+1.6023 set-timeout 9.900000 3.000000
+1.8243 read-until '>' = '18 DA F1 10 06 41 01 00 07 EF 80 \r18 DA F1 18 06 41 01 00 00 00 00 \r\r>'
+1.8275 write 'ATPC\r'
+1.8282 set-timeout 0.130000 0.130000
+1.8409 read-until '>' = 'OK\r\r>'
+1.8410 write 'ATZ\r'
+3.3413 clear rx
+3.3415 set-baud 38400
+3.3416 clear rx
+3.3416 clear tx
+3.3416 write '\x7f\x7f\r'
+3.3420 set-timeout 0.030000 0.030000
+3.3597 read-until '>' = '\x7f\x7f\r?\r\r>'
