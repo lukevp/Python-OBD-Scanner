@@ -1,0 +1,93 @@
+/dev/cu.usbserial-STS2S196
+0.0001 set-baud 38400
+0.0002 clear rx
+0.0002 clear tx
+0.0002 write '\x7f\x7f\r'
+0.0004 set-timeout 0.030000 0.030000
+0.0114 read-until '>' = '\x7f\x7f\r?\r\r>'
+0.0114 write 'ATI\r'
+0.0116 set-timeout 0.130000 0.130000
+0.0276 read-until '>' = 'ATI\rELM327 v1.3a\r\r>'
+0.0277 write 'STI\r'
+0.0278 set-timeout 0.130000 0.130000
+0.0435 read-until '>' = 'STI\r?\r\r>'
+0.0508 write 'ATWS\r'
+0.0509 set-timeout 0.130000 0.130000
+0.0753 read-until '>' = 'ATWS\r\r\rELM327 v1.3a\r\r>'
+0.0754 write 'ATE0\r'
+0.0755 set-timeout 0.130000 0.130000
+0.0913 read-until '>' = 'ATE0\rOK\r\r>'
+0.0914 write 'ATL0\r'
+0.0915 set-timeout 0.130000 0.130000
+0.1070 read-until '>' = 'OK\r\r>'
+0.1071 write 'ATH1\r'
+0.1072 set-timeout 0.130000 0.130000
+0.1231 read-until '>' = 'OK\r\r>'
+0.1232 write 'ATTP 0\r'
+0.1233 set-timeout 0.130000 0.130000
+0.1393 read-until '>' = 'OK\r\r>'
+0.1394 write '0100\r'
+0.1396 set-timeout 9.900000 9.900000
+0.1550 read-until '' = 'S'
+0.1552 read-until '' = 'E'
+0.1554 read-until '' = 'A'
+0.1556 read-until '' = 'R'
+0.1558 read-until '' = 'C'
+0.1560 read-until '' = 'H'
+0.1561 read-until '' = 'I'
+0.1563 read-until '' = 'N'
+0.1565 read-until '' = 'G'
+0.1710 read-until '' = '.'
+0.1712 read-until '' = '.'
+0.1714 read-until '' = '.'
+0.1715 read-until '' = '\r'
+5.1059 read-until '' = ''
+5.1770 read-until '' = '4'
+5.1772 read-until '' = '8'
+5.1773 read-until '' = ' '
+5.1775 read-until '' = '6'
+5.1777 read-until '' = 'B'
+5.1779 read-until '' = ' '
+5.1780 read-until '' = '1'
+5.1782 read-until '' = 'F'
+5.1784 read-until '' = ' '
+5.1928 read-until '' = '4'
+5.1930 read-until '' = '1'
+5.1932 read-until '' = ' '
+5.1933 read-until '' = '0'
+5.1935 read-until '' = '0'
+5.1937 read-until '' = ' '
+5.1938 read-until '' = '8'
+5.1940 read-until '' = '8'
+5.1942 read-until '' = ' '
+5.2089 read-until '' = '1'
+5.2090 read-until '' = '8'
+5.2092 read-until '' = ' '
+5.2094 read-until '' = '0'
+5.2096 read-until '' = '0'
+5.2097 read-until '' = ' '
+5.2099 read-until '' = '1'
+5.2101 read-until '' = '1'
+5.2102 read-until '' = ' '
+5.2409 read-until '' = 'C'
+5.2412 read-until '' = '4'
+5.2414 read-until '' = ' '
+5.2416 read-until '' = '\r'
+5.4808 read-until '>' = '48 6B 11 41 00 BE 1F A8 11 9B \r\r>'
+5.4811 write 'ATDPN\r'
+5.4813 set-timeout 0.130000 0.130000
+5.4969 read-until '>' = 'A3\r\r>'
+5.4975 write '01 01\r'
+5.4977 set-timeout 9.900000 3.000000
+5.9448 read-until '>' = '48 6B 1F 41 01 00 04 00 00 18 \r48 6B 11 41 01 00 07 65 00 72 \r\r>'
+5.9463 write 'ATPC\r'
+5.9467 set-timeout 0.130000 0.130000
+5.9610 read-until '>' = 'OK\r\r>'
+5.9611 write 'ATZ\r'
+7.4612 clear rx
+7.4614 set-baud 38400
+7.4614 clear rx
+7.4614 clear tx
+7.4614 write '\x7f\x7f\r'
+7.4616 set-timeout 0.030000 0.030000
+7.4810 read-until '>' = '\x7f\x7f\r?\r\r>'

@@ -1,0 +1,118 @@
+/dev/cu.usbserial-STS2S196
+0.0001 set-baud 38400
+0.0002 clear rx
+0.0002 clear tx
+0.0003 write '\x7f\x7f\r'
+0.0006 set-timeout 0.030000 0.030000
+0.0114 read-until '>' = '?\r\r>'
+0.0115 write 'ATI\r'
+0.0117 set-timeout 0.130000 0.130000
+0.0265 read-until '>' = 'ELM327 v1.3a\r\r>'
+0.0266 write 'STI\r'
+0.0267 set-timeout 0.130000 0.130000
+0.0425 read-until '>' = '?\r\r>'
+0.0483 write 'ATWS\r'
+0.0485 set-timeout 0.130000 0.130000
+0.0741 read-until '>' = '\r\rELM327 v1.3a\r\r>'
+0.0742 write 'ATE0\r'
+0.0743 set-timeout 0.130000 0.130000
+0.0905 read-until '>' = 'ATE0\rOK\r\r>'
+0.0905 write 'ATL0\r'
+0.0907 set-timeout 0.130000 0.130000
+0.1064 read-until '>' = 'OK\r\r>'
+0.1065 write 'ATH1\r'
+0.1066 set-timeout 0.130000 0.130000
+0.1223 read-until '>' = 'OK\r\r>'
+0.1224 write 'ATTP 0\r'
+0.1225 set-timeout 0.130000 0.130000
+0.1383 read-until '>' = 'OK\r\r>'
+0.1384 write '0100\r'
+0.1386 set-timeout 9.900000 9.900000
+0.1541 read-until '' = 'S'
+0.1543 read-until '' = 'E'
+0.1545 read-until '' = 'A'
+0.1547 read-until '' = 'R'
+0.1549 read-until '' = 'C'
+0.1550 read-until '' = 'H'
+0.1552 read-until '' = 'I'
+0.1702 read-until '' = 'N'
+0.1704 read-until '' = 'G'
+0.1705 read-until '' = '.'
+0.1707 read-until '' = '.'
+0.1709 read-until '' = '.'
+0.1711 read-until '' = '\r'
+5.1050 read-until '' = ''
+5.1611 read-until '' = '4'
+5.1613 read-until '' = '8'
+5.1614 read-until '' = ' '
+5.1616 read-until '' = '6'
+5.1618 read-until '' = 'B'
+5.1619 read-until '' = ' '
+5.1621 read-until '' = '1'
+5.1623 read-until '' = 'F'
+5.1770 read-until '' = ' '
+5.1772 read-until '' = '4'
+5.1774 read-until '' = '1'
+5.1776 read-until '' = ' '
+5.1777 read-until '' = '0'
+5.1779 read-until '' = '0'
+5.1781 read-until '' = ' '
+5.1783 read-until '' = '8'
+5.1784 read-until '' = '8'
+5.1786 read-until '' = ' '
+5.1931 read-until '' = '1'
+5.1933 read-until '' = '8'
+5.1935 read-until '' = ' '
+5.1937 read-until '' = '0'
+5.1938 read-until '' = '0'
+5.1940 read-until '' = ' '
+5.1942 read-until '' = '1'
+5.1944 read-until '' = '1'
+5.1946 read-until '' = ' '
+5.2249 read-until '' = 'C'
+5.2251 read-until '' = '4'
+5.2253 read-until '' = ' '
+5.2255 read-until '' = '\r'
+5.4650 read-until '>' = '48 6B 11 41 00 BE 1F A8 11 9B \r\r>'
+5.4653 write 'ATDPN\r'
+5.4655 set-timeout 0.130000 0.130000
+5.4811 read-until '>' = 'A3\r\r>'
+5.4919 write '01 00\r'
+5.4922 set-timeout 9.900000 3.000000
+5.9450 read-until '>' = '48 6B 1F 41 00 88 18 00 11 C4 \r48 6B 11 41 00 BE 1F A8 11 9B \r\r>'
+5.9559 write '01 01\r'
+5.9561 set-timeout 9.900000 3.000000
+6.2960 read-until '>' = '48 6B 1F 41 01 00 04 00 00 18 \r48 6B 11 41 01 00 07 65 00 72 \r\r>'
+6.3069 write '01 05\r'
+6.3070 set-timeout 9.900000 3.000000
+6.6480 read-until '>' = '48 6B 1F 41 05 49 00 00 00 61 \r48 6B 11 41 05 4A 54 \r\r>'
+6.6585 write '01 0C\r'
+6.6588 set-timeout 9.900000 3.000000
+7.0000 read-until '>' = '48 6B 1F 41 0C 14 B8 00 00 EB \r48 6B 11 41 0C 14 D2 F7 \r\r>'
+7.0107 write '01 0D\r'
+7.0109 set-timeout 9.900000 3.000000
+7.3520 read-until '>' = '48 6B 1F 41 0D 00 00 00 00 20 \r48 6B 11 41 0D 00 12 \r\r>'
+7.3627 write '01 1C\r'
+7.3630 set-timeout 9.900000 3.000000
+7.6720 read-until '>' = '48 6B 11 41 1C 03 24 \r\r>'
+7.6825 write '01 20\r'
+7.6827 set-timeout 9.900000 3.000000
+8.0560 read-until '>' = '48 6B 1F 41 20 80 00 00 00 B3 \r48 6B 11 41 20 80 00 10 00 B5 \r\r>'
+8.0668 write '01 21\r'
+8.0669 set-timeout 9.900000 3.000000
+8.3919 read-until '>' = '48 6B 1F 41 21 00 00 00 00 34 \r48 6B 11 41 21 00 00 26 \r\r>'
+8.4026 write '09 00\r'
+8.4027 set-timeout 9.900000 3.000000
+8.6479 read-until '>' = '48 6B 11 49 00 01 3C 00 00 00 4A \r\r>'
+8.6585 write '09 03\r'
+8.6587 set-timeout 9.900000 3.000000
+9.0799 read-until '>' = '48 6B 11 49 03 08 18 \r48 6B 1F 49 03 04 00 00 00 22 \r\r>'
+9.0905 write '09 04\r'
+9.0907 set-timeout 9.900000 3.000000
+10.0548 read-until '>' = '48 6B 11 49 04 01 33 30 36 36 E1 \r48 6B 11 49 04 02 38 33 33 31 E2 \r48 6B 11 49 04 03 00 00 00 00 14 \r48 6B 11 49 04 04 00 00 00 00 15 \r48 6B 11 49 04 05 33 30 36 34 E3 \r48 6B 1F 49 04 01 33 30 36 38 F1 \r48 6B 1F 49 04 02 34 39 32 39 F9 \r48 6B 1F 49 04 03 00 00 00 00 22 \r48 6B 1F 49 04 04 00 00 00 00 23 \r48 6B 11 49 04 06 31 35 33 38 E8 \r48 6B 11 49 04 07 00 00 00 00 18 \r48 6B 11 49 04 08 00 00 00 00 19 \r\r>'
+10.0679 write '09 05\r'
+10.0681 set-timeout 9.900000 3.000000
+10.4069 read-until '>' = '48 6B 1F 49 05 02 00 00 00 22 \r48 6B 11 49 05 02 14 \r\r>'
+10.4178 write '09 06\r'
+10.4180 set-timeout 9.900000 3.000000
+10.8709 read-until '>' = '48 6B 11 49 06 01 85 65 4C C3 0D \r48 6B 1F 49 06 01 C7 F3 6A DB 21 \r48 6B 1F 49 06 02 38 21 A6 E3 05 \r48 6B 11 49 06 02 0C C8 83 D6 42 \r\r>'

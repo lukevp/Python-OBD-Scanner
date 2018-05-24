@@ -1,0 +1,166 @@
+/dev/cu.usbserial-STS2S196
+0.0001 set-baud 38400
+0.0001 clear rx
+0.0002 clear tx
+0.0002 write '\x7f\x7f\r'
+0.0004 set-timeout 0.030000 0.030000
+0.0097 read-until '>' = '?\r\r>'
+0.0098 write 'ATI\r'
+0.0105 set-timeout 0.130000 0.130000
+0.0259 read-until '>' = 'ELM327 v1.3a\r\r>'
+0.0259 write 'STI\r'
+0.0260 set-timeout 0.130000 0.130000
+0.0415 read-until '>' = '?\r\r>'
+0.0452 write 'ATWS\r'
+0.0453 set-timeout 0.130000 0.130000
+0.0584 read-until '>' = '\r\rELM327 v1.3a\r\r>'
+0.0585 write 'ATE0\r'
+0.0587 set-timeout 0.130000 0.130000
+0.0743 read-until '>' = 'ATE0\rOK\r\r>'
+0.0744 write 'ATL0\r'
+0.0746 set-timeout 0.130000 0.130000
+0.0898 read-until '>' = 'OK\r\r>'
+0.0899 write 'ATH1\r'
+0.0901 set-timeout 0.130000 0.130000
+0.1058 read-until '>' = 'OK\r\r>'
+0.1059 write 'ATTP 0\r'
+0.1061 set-timeout 0.130000 0.130000
+0.1216 read-until '>' = 'OK\r\r>'
+0.1217 write '0100\r'
+0.1219 set-timeout 9.900000 9.900000
+0.1375 read-until '' = 'S'
+0.1379 read-until '' = 'E'
+0.1382 read-until '' = 'A'
+0.1385 read-until '' = 'R'
+0.1389 read-until '' = 'C'
+0.1392 read-until '' = 'H'
+0.1395 read-until '' = 'I'
+0.1398 read-until '' = 'N'
+0.1401 read-until '' = 'G'
+0.1536 read-until '' = '.'
+0.1540 read-until '' = '.'
+0.1544 read-until '' = '.'
+0.1547 read-until '' = '\r'
+1.2735 read-until '' = '7'
+1.2739 read-until '' = 'E'
+1.2743 read-until '' = '8'
+1.2746 read-until '' = ' '
+1.2749 read-until '' = '0'
+1.2752 read-until '' = '6'
+1.2755 read-until '' = ' '
+1.2759 read-until '' = '4'
+1.2762 read-until '' = '1'
+1.2766 read-until '' = ' '
+1.2769 read-until '' = '0'
+1.2773 read-until '' = '0'
+1.2776 read-until '' = ' '
+1.2779 read-until '' = 'B'
+1.2782 read-until '' = 'E'
+1.2785 read-until '' = ' '
+1.2789 read-until '' = '1'
+1.2792 read-until '' = 'B'
+1.2795 read-until '' = ' '
+1.2798 read-until '' = '3'
+1.2801 read-until '' = '0'
+1.2804 read-until '' = ' '
+1.2807 read-until '' = '1'
+1.2811 read-until '' = '3'
+1.2814 read-until '' = ' '
+1.2817 read-until '' = '\r'
+1.4802 read-until '>' = '7E9 06 41 00 88 18 00 10 \r7EA 06 41 00 00 08 00 10 \r\r>'
+1.4807 write 'ATDPN\r'
+1.4810 set-timeout 0.130000 0.130000
+1.4963 read-until '>' = 'A6\r\r>'
+1.5080 write '01 00\r'
+1.5085 set-timeout 9.900000 3.000000
+1.7360 read-until '>' = '7E8 06 41 00 BE 1B 30 13 \r7E9 06 41 00 88 18 00 10 \r7EA 06 41 00 00 08 00 10 \r\r>'
+1.7482 write '01 01\r'
+1.7484 set-timeout 9.900000 3.000000
+1.8320 read-until '>' = '7E8 06 41 01 00 07 EF 80 \r7E9 06 41 01 00 00 00 00 \r\r>'
+1.8471 write '01 03\r'
+1.8473 set-timeout 9.900000 3.000000
+1.9280 read-until '>' = '7E8 04 41 03 02 01 \r\r>'
+1.9391 write '01 04\r'
+1.9394 set-timeout 9.900000 3.000000
+2.0240 read-until '>' = '7E8 03 41 04 32 \r\r>'
+2.0349 write '01 05\r'
+2.0351 set-timeout 9.900000 3.000000
+2.1201 read-until '>' = '7E8 03 41 05 FE \r7E9 03 41 05 FE \r\r>'
+2.1316 write '01 06\r'
+2.1318 set-timeout 9.900000 3.000000
+2.2161 read-until '>' = '7E8 03 41 06 3C \r\r>'
+2.2274 write '01 07\r'
+2.2277 set-timeout 9.900000 3.000000
+2.3119 read-until '>' = '7E8 03 41 07 46 \r\r>'
+2.3226 write '01 0C\r'
+2.3229 set-timeout 9.900000 3.000000
+2.4079 read-until '>' = '7E8 04 41 0C FF FF \r7E9 04 41 0C FF FF \r\r>'
+2.4190 write '01 0D\r'
+2.4193 set-timeout 9.900000 3.000000
+2.4878 read-until '>' = '7E8 03 41 0D FF \r7E9 03 41 0D FF \r7EA 03 41 0D FF \r\r>'
+2.5002 write '01 0F\r'
+2.5004 set-timeout 9.900000 3.000000
+2.5678 read-until '>' = '7E8 03 41 0F 41 \r\r>'
+2.5788 write '01 10\r'
+2.5791 set-timeout 9.900000 3.000000
+2.6317 read-until '>' = '7E8 04 41 10 FF AF \r\r>'
+2.6423 write '01 13\r'
+2.6426 set-timeout 9.900000 3.000000
+2.6957 read-until '>' = '7E8 03 41 13 01 \r\r>'
+2.7064 write '01 14\r'
+2.7066 set-timeout 9.900000 3.000000
+2.7597 read-until '>' = '7E8 04 41 14 FE 80 \r\r>'
+2.7704 write '01 1C\r'
+2.7707 set-timeout 9.900000 3.000000
+2.8399 read-until '>' = '7E8 03 41 1C 01 \r7E9 03 41 1C 01 \r7EA 03 41 1C 01 \r\r>'
+2.8517 write '01 1F\r'
+2.8520 set-timeout 9.900000 3.000000
+2.9198 read-until '>' = '7E8 04 41 1F 02 58 \r\r>'
+2.9318 write '01 20\r'
+2.9320 set-timeout 9.900000 3.000000
+2.9997 read-until '>' = '7E8 06 41 20 80 02 20 01 \r\r>'
+3.0110 write '01 21\r'
+3.0112 set-timeout 9.900000 3.000000
+3.0646 read-until '>' = '7E8 04 41 21 03 E8 \r\r>'
+3.0763 write '01 2F\r'
+3.0765 set-timeout 9.900000 3.000000
+3.1276 read-until '>' = '7E8 03 41 2F 80 \r\r>'
+3.1388 write '01 33\r'
+3.1390 set-timeout 9.900000 3.000000
+3.2078 read-until '>' = '7E8 03 41 33 64 \r\r>'
+3.2189 write '01 40\r'
+3.2193 set-timeout 9.900000 3.000000
+3.2720 read-until '>' = '7E8 06 41 40 44 00 00 00 \r\r>'
+3.2834 write '01 42\r'
+3.2837 set-timeout 9.900000 3.000000
+3.3517 read-until '>' = '7E8 04 41 42 2E E0 \r\r>'
+3.3623 write '01 46\r'
+3.3626 set-timeout 9.900000 3.000000
+3.4155 read-until '>' = '7E8 03 41 46 3C \r\r>'
+3.4160 write '03\r'
+3.4162 set-timeout 9.900000 3.000000
+3.6397 read-until '>' = 'NO DATA\r\r>'
+3.6501 write '06 00\r'
+3.6504 set-timeout 9.900000 3.000000
+3.8641 read-until '>' = 'NO DATA\r\r>'
+3.8644 write '07\r'
+3.8653 set-timeout 9.900000 3.000000
+4.0879 read-until '>' = 'NO DATA\r\r>'
+4.0982 write '09 00\r'
+4.0985 set-timeout 9.900000 3.000000
+4.1505 read-until '>' = '7E8 06 49 00 54 40 00 00 \r\r>'
+4.1615 write '09 02\r'
+4.1618 set-timeout 9.900000 3.000000
+4.2166 read-until '>' = '7E8 10 14 49 02 01 31 47 31 \r7E8 21 4A 43 35 34 34 34 52 \r7E8 22 37 32 35 32 33 36 37 \r\r>'
+4.2289 write '09 04\r'
+4.2292 set-timeout 9.900000 3.000000
+4.2784 read-until '>' = '7E8 10 13 49 04 01 4A 4D 42 \r7E8 21 2A 33 36 37 36 31 35 \r7E8 22 30 30 00 00 00 00 00 \r\r>'
+4.2896 write '09 06\r'
+4.2897 set-timeout 9.900000 3.000000
+4.3426 read-until '>' = '7E8 07 49 06 01 17 91 BC 82 \r\r>'
+4.3544 write '09 0A\r'
+4.3546 set-timeout 9.900000 3.000000
+4.4069 read-until '>' = '7E8 10 17 49 0A 01 45 43 55 \r7E8 21 31 2D 45 6E 67 69 6E \r7E8 22 65 43 6F 6E 74 72 6F \r7E8 23 6C 00 00 00 00 00 00 \r\r>'
+4.4085 write '0A\r'
+4.4088 set-timeout 9.900000 3.000000
+4.6308 read-until '>' = 'NO DATA\r\r>'

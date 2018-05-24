@@ -1,0 +1,165 @@
+/dev/cu.usbserial-STS2S196
+0.0001 set-baud 38400
+0.0002 clear rx
+0.0002 clear tx
+0.0002 write '\x7f\x7f\r'
+0.0004 set-timeout 0.030000 0.030000
+0.0113 read-until '>' = '?\r\r>'
+0.0113 write 'ATI\r'
+0.0115 set-timeout 0.130000 0.130000
+0.0275 read-until '>' = 'ELM327 v1.3a\r\r>'
+0.0287 write 'STI\r'
+0.0288 set-timeout 0.130000 0.130000
+0.0431 read-until '>' = '?\r\r>'
+0.0517 write 'ATWS\r'
+0.0519 set-timeout 0.130000 0.130000
+0.0752 read-until '>' = '\r\rELM327 v1.3a\r\r>'
+0.0753 write 'ATE0\r'
+0.0754 set-timeout 0.130000 0.130000
+0.0912 read-until '>' = 'ATE0\rOK\r\r>'
+0.0913 write 'ATL0\r'
+0.0914 set-timeout 0.130000 0.130000
+0.1072 read-until '>' = 'OK\r\r>'
+0.1072 write 'ATH1\r'
+0.1073 set-timeout 0.130000 0.130000
+0.1231 read-until '>' = 'OK\r\r>'
+0.1231 write 'ATTP 0\r'
+0.1232 set-timeout 0.130000 0.130000
+0.1390 read-until '>' = 'OK\r\r>'
+0.1391 write '0100\r'
+0.1394 set-timeout 9.900000 9.900000
+0.1551 read-until '' = 'S'
+0.1553 read-until '' = 'E'
+0.1555 read-until '' = 'A'
+0.1557 read-until '' = 'R'
+0.1558 read-until '' = 'C'
+0.1560 read-until '' = 'H'
+0.1562 read-until '' = 'I'
+0.1564 read-until '' = 'N'
+0.1566 read-until '' = 'G'
+0.1710 read-until '' = '.'
+0.1711 read-until '' = '.'
+0.1713 read-until '' = '.'
+0.1716 read-until '' = '\r'
+1.3870 read-until '' = '1'
+1.3872 read-until '' = '8'
+1.3875 read-until '' = ' '
+1.3876 read-until '' = 'D'
+1.3878 read-until '' = 'A'
+1.3880 read-until '' = ' '
+1.3881 read-until '' = 'F'
+1.3883 read-until '' = '1'
+1.3885 read-until '' = ' '
+1.3887 read-until '' = '1'
+1.3889 read-until '' = '0'
+1.3891 read-until '' = ' '
+1.3893 read-until '' = '0'
+1.3895 read-until '' = '6'
+1.3896 read-until '' = ' '
+1.3898 read-until '' = '4'
+1.3900 read-until '' = '1'
+1.3902 read-until '' = ' '
+1.3903 read-until '' = '0'
+1.3905 read-until '' = '0'
+1.3907 read-until '' = ' '
+1.3908 read-until '' = 'B'
+1.3910 read-until '' = 'E'
+1.3912 read-until '' = ' '
+1.3914 read-until '' = '1'
+1.3916 read-until '' = 'B'
+1.3918 read-until '' = ' '
+1.3920 read-until '' = '3'
+1.3921 read-until '' = '0'
+1.3923 read-until '' = ' '
+1.3925 read-until '' = '1'
+1.3927 read-until '' = '3'
+1.3928 read-until '' = ' '
+1.3930 read-until '' = '\r'
+1.6260 read-until '>' = '18 DA F1 18 06 41 00 88 18 00 10 \r18 DA F1 28 06 41 00 00 08 00 10 \r\r>'
+1.6267 write 'ATDPN\r'
+1.6269 set-timeout 0.130000 0.130000
+1.6423 read-until '>' = 'A7\r\r>'
+1.6544 write '01 00\r'
+1.6546 set-timeout 9.900000 3.000000
+1.8819 read-until '>' = '18 DA F1 10 06 41 00 BE 1B 30 13 \r18 DA F1 18 06 41 00 88 18 00 10 \r18 DA F1 28 06 41 00 00 08 00 10 \r\r>'
+1.8950 write '01 01\r'
+1.8952 set-timeout 9.900000 3.000000
+1.9779 read-until '>' = '18 DA F1 10 06 41 01 86 07 EF 80 \r18 DA F1 18 06 41 01 81 00 00 00 \r\r>'
+1.9892 write '01 03\r'
+1.9893 set-timeout 9.900000 3.000000
+2.0740 read-until '>' = '18 DA F1 10 04 41 03 02 01 \r\r>'
+2.0853 write '01 04\r'
+2.0857 set-timeout 9.900000 3.000000
+2.1699 read-until '>' = '18 DA F1 10 03 41 04 32 \r\r>'
+2.1811 write '01 05\r'
+2.1814 set-timeout 9.900000 3.000000
+2.2660 read-until '>' = '18 DA F1 10 03 41 05 35 \r18 DA F1 18 03 41 05 35 \r\r>'
+2.2773 write '01 06\r'
+2.2776 set-timeout 9.900000 3.000000
+2.3619 read-until '>' = '18 DA F1 10 03 41 06 3C \r\r>'
+2.3733 write '01 07\r'
+2.3734 set-timeout 9.900000 3.000000
+2.4579 read-until '>' = '18 DA F1 10 03 41 07 46 \r\r>'
+2.4690 write '01 0C\r'
+2.4691 set-timeout 9.900000 3.000000
+2.5540 read-until '>' = '18 DA F1 10 04 41 0C 70 D6 \r18 DA F1 18 04 41 0C 70 D6 \r\r>'
+2.5656 write '01 0D\r'
+2.5658 set-timeout 9.900000 3.000000
+2.6340 read-until '>' = '18 DA F1 10 03 41 0D 3E \r18 DA F1 18 03 41 0D 3E \r18 DA F1 28 03 41 0D 3E \r\r>'
+2.6454 write '01 0F\r'
+2.6456 set-timeout 9.900000 3.000000
+2.7140 read-until '>' = '18 DA F1 10 03 41 0F 41 \r\r>'
+2.7253 write '01 10\r'
+2.7254 set-timeout 9.900000 3.000000
+2.7940 read-until '>' = '18 DA F1 10 04 41 10 DF 9D \r\r>'
+2.8051 write '01 13\r'
+2.8053 set-timeout 9.900000 3.000000
+2.8729 read-until '>' = '18 DA F1 10 03 41 13 01 \r\r>'
+2.8842 write '01 14\r'
+2.8846 set-timeout 9.900000 3.000000
+2.9529 read-until '>' = '18 DA F1 10 04 41 14 57 80 \r\r>'
+2.9642 write '01 1C\r'
+2.9643 set-timeout 9.900000 3.000000
+3.0329 read-until '>' = '18 DA F1 10 03 41 1C 01 \r18 DA F1 18 03 41 1C 01 \r18 DA F1 28 03 41 1C 01 \r\r>'
+3.0445 write '01 1F\r'
+3.0449 set-timeout 9.900000 3.000000
+3.1129 read-until '>' = '18 DA F1 10 04 41 1F 02 58 \r\r>'
+3.1241 write '01 20\r'
+3.1242 set-timeout 9.900000 3.000000
+3.1929 read-until '>' = '18 DA F1 10 06 41 20 80 02 20 01 \r\r>'
+3.2046 write '01 21\r'
+3.2049 set-timeout 9.900000 3.000000
+3.2729 read-until '>' = '18 DA F1 10 04 41 21 03 E8 \r\r>'
+3.2840 write '01 2F\r'
+3.2842 set-timeout 9.900000 3.000000
+3.3529 read-until '>' = '18 DA F1 10 03 41 2F 80 \r\r>'
+3.3641 write '01 33\r'
+3.3643 set-timeout 9.900000 3.000000
+3.4170 read-until '>' = '18 DA F1 10 03 41 33 64 \r\r>'
+3.4283 write '01 40\r'
+3.4285 set-timeout 9.900000 3.000000
+3.4970 read-until '>' = '18 DA F1 10 06 41 40 44 00 00 00 \r\r>'
+3.5085 write '01 42\r'
+3.5087 set-timeout 9.900000 3.000000
+3.5611 read-until '>' = '18 DA F1 10 04 41 42 2E E0 \r\r>'
+3.5726 write '01 46\r'
+3.5728 set-timeout 9.900000 3.000000
+3.6409 read-until '>' = '18 DA F1 10 03 41 46 3C \r\r>'
+3.6424 write '03\r'
+3.6425 set-timeout 9.900000 3.000000
+3.7050 read-until '>' = '18 DA F1 10 10 0E 43 06 01 00 02 00 \r18 DA F1 10 21 03 00 43 00 82 00 C1 \r18 DA F1 10 22 00 00 00 00 00 00 00 \r18 DA F1 18 04 43 01 01 01 \r\r>'
+3.7165 write '09 00\r'
+3.7167 set-timeout 9.900000 3.000000
+3.7689 read-until '>' = '18 DA F1 10 06 49 00 54 40 00 00 \r\r>'
+3.7804 write '09 02\r'
+3.7805 set-timeout 9.900000 3.000000
+3.8339 read-until '>' = '18 DA F1 10 10 14 49 02 01 31 47 31 \r18 DA F1 10 21 4A 43 35 34 34 34 52 \r18 DA F1 10 22 37 32 35 32 33 36 37 \r\r>'
+3.8451 write '09 04\r'
+3.8453 set-timeout 9.900000 3.000000
+3.8974 read-until '>' = '18 DA F1 10 10 13 49 04 01 4A 4D 42 \r18 DA F1 10 21 2A 33 36 37 36 31 35 \r18 DA F1 10 22 30 30 00 00 00 00 00 \r\r>'
+3.9089 write '09 06\r'
+3.9090 set-timeout 9.900000 3.000000
+3.9589 read-until '>' = '18 DA F1 10 07 49 06 01 17 91 BC 82 \r\r>'
+3.9703 write '09 0A\r'
+3.9704 set-timeout 9.900000 3.000000
+4.0262 read-until '>' = '18 DA F1 10 10 17 49 0A 01 45 43 55 \r18 DA F1 10 21 31 2D 45 6E 67 69 6E \r18 DA F1 10 22 65 43 6F 6E 74 72 6F \r18 DA F1 10 23 6C 00 00 00 00 00 00 \r\r>'

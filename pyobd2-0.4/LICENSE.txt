@@ -1,0 +1,21 @@
+pyOBD-II -- a Python library for communicating with OBD-II vehicles
+Copyright (C) 2009 Peter J. Creath
+
+pyOBD-II is copyrighted software by Peter J. Creath <pjcreath+obd at
+gmail.com>.  It is distributable under the terms of the GNU General
+Public License version 2.0 ("GPL") and is also available under
+alternative licensing terms negotiated directly with the copyright
+holder.
+
+You can redistribute pyOBD-II ("pyobd2") and/or modify it under
+the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+The GPL version 2.0 is included in this source tree in the file
+COPYING.txt.
