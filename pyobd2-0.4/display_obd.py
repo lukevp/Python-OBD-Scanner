@@ -9,6 +9,16 @@ from serial.serialutil import SerialException
 interface = None
 message_string = ''
 
+def doRequest(sid=None, pid=None):
+
+	if not interface:
+		startInterface()
+
+	request = obd.message.OBDRequest(sid=sid, pid=pid)
+	responses = interface.send_request(request)
+
+	return responses
+
 def startInterface():
 
 	global interface
@@ -60,32 +70,21 @@ def startInterface():
 			print(str(ae))
 			interface = None
 
-startInterface()
-
-mpg_counter = 0
-average_mpg = 0
-
-while True:
+def runMonitor():
 
 	try:
-		request = obd.message.OBDRequest(sid=0x01, pid=0x05)
-
-		responses = interface.send_request(request)
+		responses = doRequest(sid=0x01, pid=0x05)
 		message_string = str((responses[0].values[0].value * 1.8) + 32.0).ljust(5, '0')[:5] + ' deg F; '
 
-#		request = obd.message.OBDRequest(sid=0x01, pid=0x0c)
-#		responses = interface.send_request(request)
+#		responses = doRequest(sid=0x01, pid=0x0c)
 #		message_string += str(responses[0].values[0].value).ljust(7, '0')[:7] + ' rpm; '
 
-		request = obd.message.OBDRequest(sid=0x01, pid=0x10)
-		responses = interface.send_request(request)
+		responses = doRequest(sid=0x01, pid=0x10)
 		message_string += str(responses[0].values[0].value * 0.0805).ljust(5, '0')[:5] + ' gph; '
 
-		request = obd.message.OBDRequest(sid=0x01, pid=0x0d)
-		responses = interface.send_request(request)
+		responses = doRequest(sid=0x01, pid=0x0d)
 		velocity_kph = responses[0].values[0].value
-		request = obd.message.OBDRequest(sid=0x01, pid=0x10)
-		responses = interface.send_request(request)
+		responses = doRequest(sid=0x01, pid=0x10)
 		mass_af_gps = responses[0].values[0].value
 		instant_mpg = velocity_kph * 7.718 / mass_af_gps
 		mpg_total = (average_mpg * mpg_counter) + instant_mpg
@@ -93,8 +92,7 @@ while True:
 		average_mpg = mpg_total / mpg_counter
 		message_string += str(average_mpg).ljust(6, '0')[:6] + ' mpgc; '
 
-		request = obd.message.OBDRequest(sid=0x01, pid=0x42)
-		responses = interface.send_request(request)
+		responses = doRequest(sid=0x01, pid=0x42)
 		message_string += str(responses[0].values[0].value).ljust(5, '0')[:5] + ' V'
 
 	except SerialException as se:
@@ -103,7 +101,6 @@ while True:
 
 		interface.port.port.close()
 		interface = None
-		startInterface()
 
 	except obd.exception.IntervalTimeout as ite:
 
@@ -143,19 +140,36 @@ while True:
 	except IndexError as ie:
 		print(ie)
 	except AttributeError as ae:
+
 		print(ae)
+
 		if interface:
 			interface.close()
 			interface.port.port.close()
 		interface = None
-		startInterface()
+
 	except AssertionError as ae:
+
 		print(ae)
+
 		interface.close()
 		interface.port.port.close()
 		interface = None
 
 	print(message_string)
 
-interface.disconnect_from_vehicle()
-interface.close()
+if __name__ == "__main__":
+
+	startInterface()
+
+	mpg_counter = 0
+	average_mpg = 0
+
+	try:
+		while True:
+			runMonitor()
+	except KeyboardInterrupt as ki:
+		pass
+
+	interface.disconnect_from_vehicle()
+	interface.close()

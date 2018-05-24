@@ -26,7 +26,7 @@
 """Implementation of base Interface class"""
 
 import copy
-import Queue
+import queue as Queue
 import time
 
 import obd.message
@@ -69,7 +69,7 @@ class Interface(object):
         self._status_callback_fn = callback
         self._token = None
         self._frames_received = {}
-        self._complete_messages = Queue.Queue(0)
+        self._complete_messages = queue.Queue(0)
         self.identifier = identifier
         self.name = name
         return
