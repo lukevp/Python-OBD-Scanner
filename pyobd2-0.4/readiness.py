@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/python
+=======
+#!/usr/bin/env python -3
+>>>>>>> 444346ffc3e564f7d156f86f68fb26f2432b2742
 ########################################################################
 # pyOBD-II -- a Python library for communicating with OBD-II vehicles
 # Copyright (C) 2009 Peter J. Creath
