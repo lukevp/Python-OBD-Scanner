@@ -5,6 +5,7 @@ from obd.message.request import OBDRequest
 
 import time
 import datetime
+import serial
 
 from serial.serialutil import SerialException
 
@@ -50,8 +51,8 @@ class PyOBD2:
 		while not self.interface:
 
 			try:
-
-				self.interface = obd.interface.create('/dev/ttyUSB1', '--port')		
+				ser = serial.Serial('/dev/ttyUSB1', 38400)
+				self.interface = obd.interface.elm.create(ser, baud=38400)		
 				self.interface.open()
 				self.interface.set_protocol(None)
 	
@@ -205,23 +206,20 @@ if __name__ == "__main__":
 	pyobd2 = PyOBD2()
 	pyobd2.startInterface()
 
-	try:
-		while True:
-			data = pyobd2.runMonitor()
-			if data:
-				msg_string = (
-					data['engine_coolant_temp_degF'] + 
-					' deg F; ' +
-					data['engine_consumption_gph'] + 
-					' gph; ' +
-					data['average_mpg'] +
-					' mpgc; ' +
-					data['control_module_voltage'] +
-					' V;'
-				)
-				print(msg_string)
-	except KeyboardInterrupt as ki:
-		pass
+	while True:
+		data = pyobd2.runMonitor()
+		if data:
+			msg_string = (
+				data['engine_coolant_temp_degF'] + 
+				' deg F; ' +
+				data['engine_consumption_gph'] + 
+				' gph; ' +
+				data['average_mpg'] +
+				' mpgc; ' +
+				data['control_module_voltage'] +
+				' V;'
+			)
+			print(msg_string)
 
 	pyodb2.shutdown()
 
