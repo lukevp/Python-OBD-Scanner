@@ -67,14 +67,14 @@ class PyOBD2:
 						self.resetInterface()
 					except obd.exception.ReadTimeout as rt:
 						print(rt)
-						interface._flush_frames()
+						self.interface._flush_frames()
 					except obd.exception.InterfaceError as ie:
 						print(ie)
-						interface._flush_frames()
+						self.interface._flush_frames()
 
 			except obd.exception.OBDException as oe:
 				print(oe)
-				self.resetInterface()
+				self.interface = None
 				time.sleep(1)
 			except obd.exception.ReadTimeout as rt:
 				print(rt)
