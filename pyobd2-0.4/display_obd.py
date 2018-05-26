@@ -20,7 +20,7 @@ class PyOBD2:
 	def __init__(self):
 		self.interface = None
 		self.average_mpg = 0
-		self.start_counter = datetime.time()
+		self.start_counter = datetime.datetime.now()
 		self.last_counter = None
 		self.current_counter = self.start_counter
 
@@ -74,7 +74,7 @@ class PyOBD2:
 
 			except obd.exception.OBDException as oe:
 				print(oe)
-				self.interface = None
+				self.resetInterface()
 				time.sleep(1)
 			except obd.exception.ReadTimeout as rt:
 				print(rt)
@@ -93,7 +93,7 @@ class PyOBD2:
 		return_responses = {}
 
 		self.last_counter = self.current_counter
-		self.current_counter = datetime.time()
+		self.current_counter = datetime.datetime.now()
 
 		try:
 			responses = self.doRequest(sid=0x01, pid=0x04)
@@ -136,26 +136,26 @@ class PyOBD2:
 
 			return_responses['mpg_total'] = (
 				(
-					self.average_mpg * datetime.timedelta(
-						self.last_counter,
+					self.average_mpg * (
+						self.last_counter -
 						self.start_counter
-					)
+					).microseconds
 				) +
-				return_responses['instant_mpg'] * datetime.timedelta(
-						self.current_counter,
+				return_responses['instant_mpg'] * (
+						self.current_counter -
 						self.last_counter
-				)
+				).microseconds
 			)
 
 			return_responses['average_mpg'] = (
 				return_responses['mpg_total'] /
-				datetime.timedelta(
-					self.current_counter,
+				(
+					self.current_counter -
 					self.start_counter
-				)
+				).microseconds
 			)
 
-			responses = selfdoRequest(sid=0x01, pid=0x42)
+			responses = self.doRequest(sid=0x01, pid=0x42)
 			return_responses['control_module_voltage'] = (
 				responses[0].values[0].value
 			)
@@ -209,13 +209,13 @@ if __name__ == "__main__":
 		data = pyobd2.runMonitor()
 		if data:
 			msg_string = (
-				data['engine_coolant_temp_degF'] + 
+				str(data['engine_coolant_temp_degF']) + 
 				' deg F; ' +
-				data['engine_consumption_gph'] + 
+				str(data['engine_consumption_gph']) + 
 				' gph; ' +
-				data['average_mpg'] +
+				str(data['average_mpg']) +
 				' mpgc; ' +
-				data['control_module_voltage'] +
+				str(data['control_module_voltage']) +
 				' V;'
 			)
 			print(msg_string)
