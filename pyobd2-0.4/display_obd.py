@@ -100,6 +100,8 @@ class PyOBD2:
         self.last_counter = self.current_counter
         self.current_counter = datetime.datetime.now()
 
+        mpg_total = None
+
         try:
             resp = self.doRequest(sid=0x01, pid=0x04)
             return_responses['calc_engine_load_pct'] = resp 
@@ -128,7 +130,7 @@ class PyOBD2:
                 return_responses['maf_air_flow_rate_gps']
             )
 
-            return_responses['mpg_total'] = (
+            mpg_total = (
                 (
                     self.average_mpg * (
                         self.last_counter -
@@ -143,7 +145,7 @@ class PyOBD2:
             )
 
             self.average_mpg = (
-                return_responses['mpg_total'] /
+                mpg_total /
                 (
                     self.current_counter -
                     self.start_counter
