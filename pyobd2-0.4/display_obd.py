@@ -10,6 +10,7 @@ from serial.serialutil import SerialException
 
 class PyOBD2:
 
+    serialport = None
     interface = None
 
     average_mpg = 0
@@ -17,8 +18,11 @@ class PyOBD2:
     last_counter = None
     current_counter = None
 
-    def __init__(self):
+    def __init__(self, serialport='/dev/ttyUSB1'):
+
+        self.serialport = serialport
         self.interface = None
+
         self.average_mpg = 0
         self.start_counter = datetime.datetime.now()
         self.last_counter = None
@@ -51,7 +55,7 @@ class PyOBD2:
         while not self.interface:
 
             try:
-                ser = obd.serialport.SerialPort('/dev/ttyUSB1')
+                ser = obd.serialport.SerialPort(self.serialport)
                 self.interface = obd.interface.elm.create(ser)      
                 self.interface.open()
                 self.interface.set_protocol(None)
