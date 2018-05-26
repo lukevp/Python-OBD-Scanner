@@ -5,7 +5,6 @@ from obd.message.request import OBDRequest
 
 import time
 import datetime
-import serial
 
 from serial.serialutil import SerialException
 
@@ -51,8 +50,8 @@ class PyOBD2:
 		while not self.interface:
 
 			try:
-				ser = serial.Serial('/dev/ttyUSB1', 38400)
-				self.interface = obd.interface.elm.create(ser, baud=38400)		
+				ser = obd.serialport.SerialPort('/dev/ttyUSB1')
+				self.interface = obd.interface.elm.create(ser)		
 				self.interface.open()
 				self.interface.set_protocol(None)
 	
@@ -118,7 +117,7 @@ class PyOBD2:
 
 			responses = self.doRequest(sid=0x01, pid=0x10)
 			return_responses['maf_air_flow_rate_gps'] = (
-				reponses[0].values[0].value
+				responses[0].values[0].value
 			)
 			return_responses['engine_consumption_gph'] = (
 				responses[0].values[0].value * 0.0805
