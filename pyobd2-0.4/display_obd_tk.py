@@ -17,105 +17,159 @@ class Application(tk.Frame):
         mpg_counter = 0
         average_mpg = 0
 
-	def __init__(self):
+    def __init__(self):
 
-		self.root = tk.Tk()
+        self.root = tk.Tk()
 
-		self.root.rowconfigure(0, weight=1)
-		self.root.rowconfigure(1, weight=1)
-		self.root.columnconfigure(0, weight=1)
-		self.root.columnconfigure(1, weight=1)
-		self.root.columnconfigure(2, weight=1)
+        self.root.rowconfigure(0, weight=1)
+        self.root.rowconfigure(1, weight=1)
+        self.root.columnconfigure(0, weight=1)
+        self.root.columnconfigure(1, weight=1)
+        self.root.columnconfigure(2, weight=1)
 
-		self.font = tkFont.Font(size=36)
+        self.font = tkFont.Font(size=36)
 
-		tk.Frame.__init__(self, self.root)
+        tk.Frame.__init__(self, self.root)
 
-		self.root.grid()
-		self.createWidgets()
-		self.startInterface()
+        self.root.grid()
+        self.createWidgets()
+        self.startInterface()
 
-	def createWidgets(self):
+    def createWidgets(self):
 
-		self.oneLabelVar = tk.StringVar()
-		self.twoLabelVar = tk.StringVar()
-		self.threeLabelVar = tk.StringVar()
-		self.fourLabelVar = tk.StringVar()
-		self.fiveLabelVar = tk.StringVar()
-		self.sixLabelVar = tk.StringVar()
+        self.oneLabelVar = tk.StringVar()
+        self.twoLabelVar = tk.StringVar()
+        self.threeLabelVar = tk.StringVar()
+        self.fourLabelVar = tk.StringVar()
+        self.fiveLabelVar = tk.StringVar()
+        self.sixLabelVar = tk.StringVar()
 
-		self.oneLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.oneLabelVar)
-		self.oneLabel.grid(row=0, column=0, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.oneLabelVar.set('1')
+        self.oneLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.oneLabelVar
+        )
+        self.oneLabel.grid(
+            row=0,
+            column=0,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.oneLabelVar.set('1')
 
-		self.twoLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.twoLabelVar)
-		self.twoLabel.grid(row=0, column=1, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.twoLabelVar.set('2')
+        self.twoLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.twoLabelVar
+        )
+        self.twoLabel.grid(
+            row=0,
+            column=1,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.twoLabelVar.set('2')
 
-		self.threeLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.threeLabelVar)
-		self.threeLabel.grid(row=0, column=2, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.threeLabelVar.set('3')
+        self.threeLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.threeLabelVar
+        )
+        self.threeLabel.grid(
+            row=0,
+            column=2,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.threeLabelVar.set('3')
 
-		self.fourLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.fourLabelVar)
-		self.fourLabel.grid(row=1, column=0, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.fourLabelVar.set('4')
+        self.fourLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.fourLabelVar
+        )
+        self.fourLabel.grid(
+            row=1,
+            column=0,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.fourLabelVar.set('4')
 
-		self.fiveLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.fiveLabelVar)
-		self.fiveLabel.grid(row=1, column=1, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.fiveLabelVar.set('5')
+        self.fiveLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.fiveLabelVar
+        )
+        self.fiveLabel.grid(
+            row=1,
+            column=1,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.fiveLabelVar.set('5')
 
-		self.sixLabel = tk.Label(self.root, font=self.font, relief=tk.SUNKEN, textvariable=self.sixLabelVar)
-		self.sixLabel.grid(row=1, column=2, sticky=tk.N+tk.S+tk.E+tk.W)
-		self.sixLabelVar.set('6')
-		
+        self.sixLabel = tk.Label(
+            self.root,
+            font=self.font,
+            relief=tk.SUNKEN,
+            textvariable=self.sixLabelVar
+        )
+        self.sixLabel.grid(
+            row=1,
+            column=2,
+            sticky=tk.N+tk.S+tk.E+tk.W
+        )
+        self.sixLabelVar.set('6')
+        
         def startInterface(self):
-	
-		while not self.interface:
-	
-			try:
-				ser = obd.serialport.SerialPort(serialPort)
-				self.interface = obd.interface.elm.create(ser)
-				self.interface.open()
-				self.interface.set_protocol(None)
-		
-				while not self.interface.connected_to_vehicle:
-	
-					try:
-						self.interface.connect_to_vehicle()
-					except obd.exception.ConnectionError as ce:
-						print(str(ce))
-						self.interface._flush_frames()
-					except obd.exception.CommandNotSupported as cns:
-						print(str(cns))
-						self.interface.close()
-						self.interface.port.port.close()
-						self.interface = None
-					except obd.exception.ReadTimeout as rt:
-						print(str(rt))
-						self.interface._flush_frames()
-					except obd.exception.InterfaceError as ie:
-						print(str(ie))
-						self.interface._flush_frames()
-	
-			except obd.exception.OBDException as oe:
-				print(str(oe))
-				self.interface = None
-				time.sleep(1)
-			except obd.exception.ReadTimeout as rt:
-				print(str(rt))
-				self.interface.close()
-				self.interface.port.port.close()
-				self.interface = None
-				time.sleep(1)
-			except obd.exception.InterfaceError as ie:
-				print(str(ie))
-				self.interface.close()
-				self.interface.port.port.close()
-				self.interface = None
-				time.sleep(1)
-			except AttributeError as ae:
-				print(str(ae))
-				self.interface = None
+    
+        while not self.interface:
+    
+            try:
+                ser = obd.serialport.SerialPort(serialPort)
+                self.interface = obd.interface.elm.create(ser)
+                self.interface.open()
+                self.interface.set_protocol(None)
+        
+                while not self.interface.connected_to_vehicle:
+    
+                    try:
+                        self.interface.connect_to_vehicle()
+                    except obd.exception.ConnectionError as ce:
+                        print(str(ce))
+                        self.interface._flush_frames()
+                    except obd.exception.CommandNotSupported as cns:
+                        print(str(cns))
+                        self.interface.close()
+                        self.interface.port.port.close()
+                        self.interface = None
+                    except obd.exception.ReadTimeout as rt:
+                        print(str(rt))
+                        self.interface._flush_frames()
+                    except obd.exception.InterfaceError as ie:
+                        print(str(ie))
+                        self.interface._flush_frames()
+    
+            except obd.exception.OBDException as oe:
+                print(str(oe))
+                self.interface = None
+                time.sleep(1)
+            except obd.exception.ReadTimeout as rt:
+                print(str(rt))
+                self.interface.close()
+                self.interface.port.port.close()
+                self.interface = None
+                time.sleep(1)
+            except obd.exception.InterfaceError as ie:
+                print(str(ie))
+                self.interface.close()
+                self.interface.port.port.close()
+                self.interface = None
+                time.sleep(1)
+            except AttributeError as ae:
+                print(str(ae))
+                self.interface = None
 
         def displayOBDGauges(self):
 
@@ -155,10 +209,10 @@ class Application(tk.Frame):
                                 
                         except obd.exception.IntervalTimeout as ite:
                                 print(ite)
-				self.interface.close()
-				self.interface.port.port.close()
-				self.interface = None
-				self.startInterface()
+                self.interface.close()
+                self.interface.port.port.close()
+                self.interface = None
+                self.startInterface()
                         except obd.exception.ProtocolError as pe:
                                 print(pe)
                                 self.interface._flush_frames()
@@ -172,17 +226,17 @@ class Application(tk.Frame):
                         except ValueError as ve:
                                 print(ve)
                                 self.interface._flush_frames()
-			except IndexError as ie:
-				print(ie)
-				self.interface._flush_frames()
+            except IndexError as ie:
+                print(ie)
+                self.interface._flush_frames()
                         except AttributeError as ae:
                                 print(ae)
                                 self.interface._flush_frames()
-			except AssertionError as ae:
-				print(ae)
-				self.interface.close()
-				self.interface.port.port.close()
-				self.interface = None
+            except AssertionError as ae:
+                print(ae)
+                self.interface.close()
+                self.interface.port.port.close()
+                self.interface = None
                                 self.startInterface()
 
                         self.root.update_idletasks()
@@ -190,7 +244,7 @@ class Application(tk.Frame):
 
 
 if __name__ == '__main__':
-	app = Application()
-	app.master.title('PyOBD Gauges')
-	app.displayOBDGauges()
-	app.mainloop()
+    app = Application()
+    app.master.title('PyOBD Gauges')
+    app.displayOBDGauges()
+    app.mainloop()
