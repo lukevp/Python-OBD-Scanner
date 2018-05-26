@@ -73,8 +73,8 @@ class Application(tk.Frame):
 		while not self.interface:
 	
 			try:
-	
-				self.interface = obd.interface.create(serialPort, '--port')		
+				ser = obd.serialport.SerialPort(serialPort)
+				self.interface = obd.interface.elm.create(ser)
 				self.interface.open()
 				self.interface.set_protocol(None)
 		
