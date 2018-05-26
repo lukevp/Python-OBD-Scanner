@@ -133,21 +133,23 @@ class PyOBD2:
                     self.average_mpg * (
                         self.last_counter -
                         self.start_counter
-                    ).microseconds
-                ) +
-                return_responses['instant_mpg'] * (
-                    self.current_counter -
-                    self.last_counter
-                ).microseconds
+                    ).total_seconds()
+                ) + (
+                    return_responses['instant_mpg'] * (
+                        self.current_counter -
+                        self.last_counter
+                    ).total_seconds()
+                )
             )
 
-            return_responses['average_mpg'] = (
+            self.average_mpg = (
                 return_responses['mpg_total'] /
                 (
                     self.current_counter -
                     self.start_counter
-                ).microseconds
+                ).total_seconds()
             )
+            return_responses['average_mpg'] = self.average_mpg
 
             resp = self.doRequest(sid=0x01, pid=0x42)
             return_responses['control_module_voltage'] = resp
