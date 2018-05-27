@@ -1,4 +1,5 @@
 #!/usr/bin/env python -3
+
 ########################################################################
 # pyOBD-II -- a Python library for communicating with OBD-II vehicles
 # Copyright (C) 2009 Peter J. Creath

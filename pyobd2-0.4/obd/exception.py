@@ -155,5 +155,3 @@ class ProtocolError(VehicleException):
 class J1699Failure(VehicleException):
     """OBD responses that fail J1699 conformance tests"""
     pass
-    
-# vim: softtabstop=4 shiftwidth=4 expandtab                                     

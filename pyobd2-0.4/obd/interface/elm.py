@@ -418,7 +418,7 @@ class ELM32X(Interface):
         self._current_status = ""
         self.open()
         if self.connected_to_vehicle:
-            raise CommandNotSupported("Already connected to vehicle")
+            raise obd.exception.CommandNotSupported("Already connected to vehicle")
         self._protocol_response = None
         
         self._status_callback("Connecting to vehicle...")
@@ -488,7 +488,7 @@ class ELM32X(Interface):
         Raises an exception if there is no active session.
         """
         if not self.connected_to_vehicle:
-            raise CommandNotSupported("Already disconnected from vehicle")
+            raise obd.exception.CommandNotSupported("Already disconnected from vehicle")
         self.at_cmd("ATPC")
         self.connected_to_vehicle = False
         return
@@ -509,7 +509,7 @@ class ELM32X(Interface):
         for line in lines:
             # Raise exceptions for any errors
             if line == "?":
-                raise CommandNotSupported()
+                raise obd.exception.CommandNotSupported()
 
             if line == "NO DATA":
                 raise obd.exception.DataError(raw=line)            
@@ -616,7 +616,7 @@ class ELM327(ELM32X):
         Raises an exception if not connected with a vehicle.
         """
         if not self.connected_to_vehicle:
-            raise CommandNotSupported("Not connected to vehicle")
+            raise obd.exception.CommandNotSupported("Not connected to vehicle")
         response = self.at_cmd("ATDPN")
         # suppress any "automatic" prefix
         if len(response) > 1 and response.startswith("A"):
@@ -666,7 +666,7 @@ class ELM327(ELM32X):
 
         # Check whether AT BRD is supported
         if (not response.endswith("OK\r")):
-            raise CommandNotSupported("Scanner doesn't support AT BRD; " +
+            raise obd.exception.CommandNotSupported("Scanner doesn't support AT BRD; " +
                                       "staying at %d" % old_baud)
         try:
             # Set the port to the new baud rate

@@ -56,7 +56,7 @@ class SerialPort(object):
         if (sys.platform.startswith("darwin")):
             ports = SerialPort._find_mac_serial_ports()
         else:
-            raise OBDException("Automatic interface detection not implemented for " + sys.platform)
+            raise exception.OBDException("Automatic interface detection not implemented for " + sys.platform)
         SerialPort.ports = ports
         return SerialPort.ports
     enumerate = staticmethod(enumerate)
